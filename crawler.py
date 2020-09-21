@@ -7,7 +7,7 @@ class crawler:
         chrome_options=Options()
         chrome_options.add_argument("--headless")
         chrome_options.add_argument('--no-sandbox')
-        chrome_options.add_argument('--disable-dev-shm-usagw')
+        chrome_options.add_argument('--disable-dev-shm-usage')
         self.__drivrer=webdriver.Chrome(chrome_options=chrome_options)
         self.__information="""
             dcard Linebot v1
