@@ -50,7 +50,6 @@ class crawler:
                     response =artical.find_element_by_xpath('./article/div[4]/div[2]/span[2]').text
                     xStr += '\n'.join([title,href,motion,response])
                 except Exception as e:
-                    return 'wwwwwwwwwwwwrrrrrrrrrrroooooooooooonnnnnnngggggggg'
                     pass
             self.__close()
             return xStr
