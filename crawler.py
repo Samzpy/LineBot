@@ -46,7 +46,7 @@ class crawler:
                 motion ="心情:" + artical.find_element_by_xpath('./article/div[4]/div[1]/div/div[2]').text
                 response ="回應" +artical.find_element_by_xpath('./article/div[4]/div[2]/span[2]').text
                 articleString = "\n".join([title,href,motion,response])
-                xStr += articleString + "\n" + ('-'*28)+"\n")
+                xStr += articleString + "\n" + ('-'*28)+"\n"
             except Exception as e:
                 pass
         self.__close()
