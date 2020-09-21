@@ -43,13 +43,13 @@ class crawler:
             try:
                 title = artical.find_element_by_xpath('./article/h2/a/span').text
                 href = artical.find_element_by_xpath('./article/h2/a').get_attribute('href')
-                motion =artical.find_element_by_xpath('./article/div[4]/div[1]/div/div[2]').tect
+                motion =artical.find_element_by_xpath('./article/div[4]/div[1]/div/div[2]').text
                 response =artical.find_element_by_xpath('./article/div[4]/div[2]/span[2]').text
-                xStr += '\n'.join([title,href,motion,response])
+                xStr += "\n".join([title,href,motion,response])
             except Exception as e:
                 pass
         self.__close()
         return xStr
 x = crawler()
-x.crawl_specific_forum('dfsdaf')
+x.crawl_specific_forum('穿搭')
 
