@@ -51,6 +51,3 @@ class crawler:
                 pass
         self.__close()
         return xStr
-x = crawler()
-x.crawl_specific_forum('穿搭')
-
