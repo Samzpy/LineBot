@@ -9,9 +9,7 @@ class crawler:
         chrome_options.add_argument('--no-sandbox')
         chrome_options.add_argument('--disable-dev-shm-usage')
         self.__drivrer=webdriver.Chrome(chrome_options=chrome_options)
-        self.__information="""
-            dcard Linebot v1
-        """
+        self.__information="dcard Linebot v1"
 
     @property
     def information(self):
@@ -24,7 +22,6 @@ class crawler:
                 if line == '\n':
                     continue
                 forumlist.append(line)
-
         return forumlist
     def __close(self):
         sl(0.5)
@@ -35,24 +32,24 @@ class crawler:
             if i.split(",")[0] in name:
                 link = i.split(",")[1]
                 break
-            else:
-                self.__close()
-                return "無此看板"
-            self.__drivrer.get(link)
-            sl(0.5)
-            r_list=self.__drivrer.find_elements_by_xpath('//*[@id="__next"]/div[2]/div[2]/div/div/div/div[2]/div[2]/div/div[1]/div')
-            xStr=""
-            for artical in r_list:
-                try:
-                    title = artical.find_element_by_xpath('./article/h2/a/span').text
-                    href = artical.find_element_by_xpath('./article/h2/a').get_attribute('href')
-                    motion =artical.find_element_by_xpath('./article/div[4]/div[1]/div/div[2]').tect
-                    response =artical.find_element_by_xpath('./article/div[4]/div[2]/span[2]').text
-                    xStr += '\n'.join([title,href,motion,response])
-                except Exception as e:
-                    pass
+        else:
             self.__close()
-            return xStr
+            return "無此看板"
+        self.__drivrer.get(link)
+        sl(0.5)
+        r_list=self.__drivrer.find_elements_by_xpath('//*[@id="__next"]/div[2]/div[2]/div/div/div/div[2]/div[2]/div/div[1]/div')
+        xStr=""
+        for artical in r_list:
+            try:
+                title = artical.find_element_by_xpath('./article/h2/a/span').text
+                href = artical.find_element_by_xpath('./article/h2/a').get_attribute('href')
+                motion =artical.find_element_by_xpath('./article/div[4]/div[1]/div/div[2]').tect
+                response =artical.find_element_by_xpath('./article/div[4]/div[2]/span[2]').text
+                xStr += '\n'.join([title,href,motion,response])
+            except Exception as e:
+                pass
+        self.__close()
+        return xStr
 x = crawler()
-print(x.get_forumList())
+x.crawl_specific_forum('dfsdaf')
 
