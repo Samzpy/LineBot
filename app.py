@@ -43,10 +43,10 @@ def handle_message(event):
         else:
             DcardCrawler=crawler()
             result=DcardCrawler.crawl_specific_forum(event.message.text)
+        result='測試'
         message = TextSendMessage(text=result)
         line_bot_api.reply_message(event.reply_token, message)
-    else:
-        pass
+
     # if "資訊" == event.message.text:
     #     DcardCrawler=crawler()
     #     result= DcardCrawler.information
