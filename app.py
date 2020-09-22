@@ -36,7 +36,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     # message = TextSendMessage(text=event.message.text)
-    if event.message.text[0] == '#'
+    if event.message.text[0] == '#':
         result='測試'
         if "#資訊" == event.message.text:
             DcardCrawler=crawler()
