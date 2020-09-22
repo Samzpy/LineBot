@@ -37,7 +37,6 @@ def callback():
 def handle_message(event):
     # message = TextSendMessage(text=event.message.text)
     if event.message.text[0] == '#':
-        result='測試'
         if "#資訊" == event.message.text:
             DcardCrawler=crawler()
             result= DcardCrawler.information
@@ -46,16 +45,6 @@ def handle_message(event):
             result=DcardCrawler.crawl_specific_forum(event.message.text)
         message = TextSendMessage(text=result)
         line_bot_api.reply_message(event.reply_token, message)
-
-    # if "資訊" == event.message.text:
-    #     DcardCrawler=crawler()
-    #     result= DcardCrawler.information
-    # else:
-    #     DcardCrawler=crawler()
-    #     result=DcardCrawler.crawl_specific_forum(event.message.text)
-    # message = TextSendMessage(text=result)
-    # line_bot_api.reply_message(event.reply_token, message)
-
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
