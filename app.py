@@ -35,25 +35,26 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    # message = TextSendMessage(text=event.message.text)
-    # if event.message.text[0] == '/'
-    #     if "/資訊" == event.message.text:
-    #         DcardCrawler=crawler()
-    #         result= DcardCrawler.information
-    #     else:
-    #         DcardCrawler=crawler()
-    #         result=DcardCrawler.crawl_specific_forum(event.message.text)
-    #     message = TextSendMessage(text=result)
-    #     line_bot_api.reply_message(event.reply_token, message)
-    # else:
-    if "資訊" == event.message.text:
-        DcardCrawler=crawler()
-        result= DcardCrawler.information
+    message = TextSendMessage(text=event.message.text)
+    if event.message.text[0] == '/'
+        if "/資訊" == event.message.text:
+            DcardCrawler=crawler()
+            result= DcardCrawler.information
+        else:
+            DcardCrawler=crawler()
+            result=DcardCrawler.crawl_specific_forum(event.message.text)
+        message = TextSendMessage(text=result)
+        line_bot_api.reply_message(event.reply_token, message)
     else:
-        DcardCrawler=crawler()
-        result=DcardCrawler.crawl_specific_forum(event.message.text)
-    message = TextSendMessage(text=result)
-    line_bot_api.reply_message(event.reply_token, message)
+        pass
+    # if "資訊" == event.message.text:
+    #     DcardCrawler=crawler()
+    #     result= DcardCrawler.information
+    # else:
+    #     DcardCrawler=crawler()
+    #     result=DcardCrawler.crawl_specific_forum(event.message.text)
+    # message = TextSendMessage(text=result)
+    # line_bot_api.reply_message(event.reply_token, message)
 
 import os
 if __name__ == "__main__":
