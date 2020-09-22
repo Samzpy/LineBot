@@ -36,8 +36,8 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     # message = TextSendMessage(text=event.message.text)
-    if event.message.text[0] == '0'
-        if "資訊" == event.message.text:
+    if event.message.text[0] == '/'
+        if "/資訊" == event.message.text:
             DcardCrawler=crawler()
             result= DcardCrawler.information
         else:
@@ -46,7 +46,7 @@ def handle_message(event):
         message = TextSendMessage(text=result)
         line_bot_api.reply_message(event.reply_token, message)
     else:
-        
+
 
 import os
 if __name__ == "__main__":
